@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci5a2y04bijyv"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bxu7s"]
+[ext_resource type="Texture2D" uid="uid://djf7ba4m21yo7" path="res://mainmenu.png" id="2_5g3uu"]
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="3_8l66d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhr1a"]
+font = ExtResource("3_8l66d")
+font_size = 200
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxu7s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_right = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5g3uu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 91.0
+offset_right = 351.0
+offset_bottom = 267.0
+grow_horizontal = 2
+text = "MR. DODGE"
+label_settings = SubResource("LabelSettings_qhr1a")
+
+[node name="ButtonPlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -17.0
+offset_right = 66.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "PLAY"
+
+[node name="ButtonOption" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 56.0
+offset_right = 85.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "OPTION"
+
+[node name="ButtonCredit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 124.0
+offset_right = 85.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "CREDIT"
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]

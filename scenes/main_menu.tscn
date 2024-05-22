@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci5a2y04bijyv"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bxu7s"]
+[ext_resource type="Texture2D" uid="uid://djf7ba4m21yo7" path="res://mainmenu.png" id="2_5g3uu"]
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="3_8l66d"]
+[ext_resource type="PackedScene" uid="uid://boadpmjc0o80h" path="res://scenes/controls.tscn" id="4_aeana"]
+[ext_resource type="PackedScene" uid="uid://y40kq1jmy3d6" path="res://scenes/credit.tscn" id="5_pijp0"]
+[ext_resource type="PackedScene" uid="uid://pffvhw0l1h8k" path="res://scenes/volume_button.tscn" id="7_6inbk"]
+[ext_resource type="AudioStream" uid="uid://bkym75ruw5gyn" path="res://son3.mp3" id="7_um5nw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhr1a"]
+font = ExtResource("3_8l66d")
+font_size = 200
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxu7s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_right = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5g3uu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 91.0
+offset_right = 351.0
+offset_bottom = 267.0
+grow_horizontal = 2
+text = "MR. DODGE"
+label_settings = SubResource("LabelSettings_qhr1a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = 317.0
+offset_right = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPlay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "PLAY"
+
+[node name="ButtonOption" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "CONTROLS"
+
+[node name="ButtonCredit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 36
+text = "CREDIT"
+
+[node name="Controls" parent="." instance=ExtResource("4_aeana")]
+visible = false
+
+[node name="Button2" type="Button" parent="Controls"]
+anchors_preset = -1
+anchor_left = 0.494
+anchor_right = 0.494
+offset_left = -69.088
+offset_top = 459.0
+offset_right = 68.912
+offset_bottom = 535.0
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+metadata/_edit_use_anchors_ = true
+
+[node name="Credit" parent="." instance=ExtResource("5_pijp0")]
+visible = false
+
+[node name="Back2" type="Button" parent="Credit"]
+anchors_preset = -1
+anchor_left = 0.514
+anchor_right = 0.514
+offset_left = -61.128
+offset_top = 506.0
+offset_right = 61.872
+offset_bottom = 574.0
+theme_override_fonts/font = ExtResource("3_8l66d")
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[node name="Bouton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_um5nw")
+
+[node name="ButtonVolumeMusic1" parent="." instance=ExtResource("7_6inbk")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -86.9999
+offset_right = -103.0
+offset_bottom = -54.9999
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.64205, 1.64205)
+
+[connection signal="pressed" from="VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonOption" to="." method="_on_button_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonCredit" to="." method="_on_button_credit_pressed"]
+[connection signal="pressed" from="Controls/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Credit/Back2" to="." method="_on_back_2_pressed"]

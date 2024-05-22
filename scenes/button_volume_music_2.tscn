@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmyf4cdhdiwfi"]
+
+[ext_resource type="Script" path="res://ButtonVolumeMusic2.gd" id="1_1iws0"]
+[ext_resource type="Texture2D" uid="uid://bdw03dbn57oq5" path="res://volume.png" id="2_rb5to"]
+[ext_resource type="Texture2D" uid="uid://2usula3rwme6" path="res://volume-2.png" id="3_fkymj"]
+[ext_resource type="Texture2D" uid="uid://cs52ah6vtx7ip" path="res://volume-3.png" id="4_evvn8"]
+[ext_resource type="Texture2D" uid="uid://hxeshbrf4cx7" path="res://volume-4.png" id="5_ydcn2"]
+[ext_resource type="AudioStream" uid="uid://du6lebcpq7qku" path="res://music2.mp3" id="6_bvgxy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgs2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rb5to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fkymj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_evvn8")
+}],
+"loop": true,
+"name": &"animed",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ydcn2")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[node name="ButtonVolumeMusic2" type="TextureButton"]
+offset_right = 52.0
+offset_bottom = 47.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_1iws0")
+
+[node name="volume" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 24)
+scale = Vector2(1.51701, 1.51701)
+sprite_frames = SubResource("SpriteFrames_mgs2f")
+animation = &"animed"
+autoplay = "animed"
+frame = 1
+frame_progress = 0.227829
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(27, 23)
+stream = ExtResource("6_bvgxy")
+autoplay = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="." to="." method="_on_pressed2"]

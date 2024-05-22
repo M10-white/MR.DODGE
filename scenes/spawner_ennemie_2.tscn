@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://c54tw5112fnxm"]
+
+[ext_resource type="Script" path="res://scenes/spawner_ennemie_2.gd" id="1_bdkwb"]
+
+[node name="SpawnerEnnemie2" type="Node2D"]
+script = ExtResource("1_bdkwb")
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D7" type="Marker2D" parent="Markers"]
+position = Vector2(196, 739)
+scale = Vector2(-0.102347, 0.895468)
+
+[node name="Marker2D8" type="Marker2D" parent="Markers"]
+position = Vector2(385, 738)
+
+[node name="Marker2D9" type="Marker2D" parent="Markers"]
+position = Vector2(578, 739)
+
+[node name="Marker2D10" type="Marker2D" parent="Markers"]
+position = Vector2(763, 745)
+
+[node name="Marker2D11" type="Marker2D" parent="Markers"]
+position = Vector2(952, 747)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

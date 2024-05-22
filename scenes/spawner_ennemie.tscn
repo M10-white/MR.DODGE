@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxlguie11hp46"]
+
+[ext_resource type="Script" path="res://scenes/spawner_ennemie.gd" id="1_lmoxn"]
+
+[node name="SpawnerEnnemie" type="Node2D"]
+script = ExtResource("1_lmoxn")
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(98, -120)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(287, -119)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(472, -119)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers"]
+position = Vector2(663, -119)
+
+[node name="Marker2D5" type="Marker2D" parent="Markers"]
+position = Vector2(850, -126)
+
+[node name="Marker2D6" type="Marker2D" parent="Markers"]
+position = Vector2(1046, -126)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

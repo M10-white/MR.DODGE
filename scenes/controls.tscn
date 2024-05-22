@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://boadpmjc0o80h"]
+
+[ext_resource type="Script" path="res://scenes/controls.gd" id="1_a3vsg"]
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="2_36x23"]
+[ext_resource type="Texture2D" uid="uid://b8bgla14qysho" path="res://controls1.png" id="2_hb1cv"]
+[ext_resource type="Texture2D" uid="uid://dud5ridr8wfb6" path="res://controls2.png" id="3_rqx8u"]
+[ext_resource type="AudioStream" uid="uid://bkym75ruw5gyn" path="res://son3.mp3" id="5_v6oob"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_soojw"]
+font = ExtResource("2_36x23")
+font_size = 100
+outline_size = 1
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t3gpc"]
+font = ExtResource("2_36x23")
+font_size = 70
+
+[node name="Controls" type="CanvasLayer"]
+script = ExtResource("1_a3vsg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = 118.0
+offset_right = 166.0
+offset_bottom = -442.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "CONTROLS"
+label_settings = SubResource("LabelSettings_soojw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 321.0
+offset_right = 39.0
+offset_bottom = 400.0
+grow_horizontal = 2
+text = "OR"
+label_settings = SubResource("LabelSettings_t3gpc")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.314
+anchor_right = 0.314
+offset_left = -86.728
+offset_top = 287.0
+offset_right = 86.272
+offset_bottom = 410.0
+texture = ExtResource("2_hb1cv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.676
+anchor_right = 0.676
+offset_left = -83.7521
+offset_top = 289.0
+offset_right = 83.2479
+offset_bottom = 414.0
+texture = ExtResource("3_rqx8u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bouton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v6oob")

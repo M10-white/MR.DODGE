@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://do8guqldaq7uf"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_8xgvj"]
+[ext_resource type="Texture2D" uid="uid://bc37uxfa7khy8" path="res://scene.png" id="1_msacl"]
+[ext_resource type="PackedScene" uid="uid://c6qb1tuiqt1q3" path="res://scenes/player.tscn" id="2_5jbop"]
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="2_k7p66"]
+[ext_resource type="PackedScene" uid="uid://cxlguie11hp46" path="res://scenes/spawner_ennemie.tscn" id="3_f8h48"]
+[ext_resource type="PackedScene" uid="uid://cehbdbd7qjhmh" path="res://scenes/game_over.tscn" id="6_c7j1q"]
+[ext_resource type="PackedScene" uid="uid://c54tw5112fnxm" path="res://scenes/spawner_ennemie_2.tscn" id="7_rq3wt"]
+[ext_resource type="AudioStream" uid="uid://dilb6b61ldxit" path="res://son.mp3" id="9_7rjhw"]
+[ext_resource type="PackedScene" uid="uid://dmyf4cdhdiwfi" path="res://scenes/button_volume_music_2.tscn" id="10_6tdy1"]
+[ext_resource type="AudioStream" uid="uid://cyrdibl58xe1a" path="res://son2.mp3" id="10_oyvfw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_th6pq"]
+font = ExtResource("2_k7p66")
+font_size = 35
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvs6b"]
+size = Vector2(56.7495, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0mar"]
+size = Vector2(51, 678)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_8xgvj")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.977717, 1.04155)
+texture = ExtResource("1_msacl")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 72.0
+offset_top = 26.0
+offset_right = 175.0
+offset_bottom = 58.0
+text = "LEVEL : 0"
+label_settings = SubResource("LabelSettings_th6pq")
+
+[node name="ButtonVolumeMusic2" parent="UI" instance=ExtResource("10_6tdy1")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -85.0
+offset_right = -87.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.21236, 1.19189)
+
+[node name="GameOver" parent="." instance=ExtResource("6_c7j1q")]
+visible = false
+
+[node name="ScoreOver" type="Label" parent="GameOver"]
+anchors_preset = -1
+anchor_left = 0.498
+anchor_right = 0.498
+offset_left = -88.696
+offset_top = 300.0
+offset_right = 88.304
+offset_bottom = 332.0
+text = "FINAL LEVEL : 0"
+label_settings = SubResource("LabelSettings_th6pq")
+
+[node name="Player" parent="." instance=ExtResource("2_5jbop")]
+position = Vector2(560, 338)
+
+[node name="SpawnerEnnemie" parent="." instance=ExtResource("3_f8h48")]
+
+[node name="SpawnerEnnemie2" parent="." instance=ExtResource("7_rq3wt")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7rjhw")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_oyvfw")
+
+[node name="Container" type="Container" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColisionArbreG" type="StaticBody2D" parent="Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/ColisionArbreG"]
+position = Vector2(28.25, 338)
+shape = SubResource("RectangleShape2D_tvs6b")
+metadata/_edit_lock_ = true
+
+[node name="ColisionArbreD" type="StaticBody2D" parent="Container"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/ColisionArbreD"]
+position = Vector2(1127.5, 339)
+shape = SubResource("RectangleShape2D_j0mar")
+metadata/_edit_lock_ = true
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

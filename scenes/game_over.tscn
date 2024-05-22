@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://cehbdbd7qjhmh"]
+
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="1_gkgvs"]
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_w2ota"]
+[ext_resource type="AudioStream" uid="uid://bkym75ruw5gyn" path="res://son3.mp3" id="3_7lic3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_soojw"]
+font = ExtResource("1_gkgvs")
+font_size = 100
+outline_size = 1
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_w2ota")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.666667)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = 205.0
+offset_right = 207.0
+offset_bottom = -355.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "GAME OVER !"
+label_settings = SubResource("LabelSettings_soojw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.63
+anchor_right = 0.5
+anchor_bottom = 0.63
+offset_left = -66.0001
+offset_top = -42.24
+offset_right = 49.9999
+offset_bottom = 85.76
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00651, 1.00651)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gkgvs")
+theme_override_font_sizes/font_size = 40
+text = "Retry"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gkgvs")
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+
+[node name="Bouton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7lic3")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

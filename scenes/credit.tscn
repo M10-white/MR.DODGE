@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://y40kq1jmy3d6"]
+
+[ext_resource type="FontFile" uid="uid://fxn1rk5dwyym" path="res://Nihonium113.ttf" id="1_leo5d"]
+[ext_resource type="Script" path="res://scenes/credit.gd" id="1_lql1s"]
+[ext_resource type="Texture2D" uid="uid://dyv1unc3m3v2h" path="res://mePixel.png" id="2_smrv3"]
+[ext_resource type="AudioStream" uid="uid://bkym75ruw5gyn" path="res://son3.mp3" id="4_quwrl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_soojw"]
+font = ExtResource("1_leo5d")
+font_size = 50
+outline_size = 1
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrweo"]
+font = ExtResource("1_leo5d")
+font_size = 25
+
+[node name="Credit" type="CanvasLayer"]
+script = ExtResource("1_lql1s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = 273.0
+offset_right = 131.0
+offset_bottom = -330.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "@CHKWEBDEV"
+label_settings = SubResource("LabelSettings_soojw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.51
+anchor_right = 0.51
+offset_left = -99.52
+offset_top = 55.0
+offset_right = 100.48
+offset_bottom = 255.0
+texture = ExtResource("2_smrv3")
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.512
+anchor_right = 0.512
+offset_left = -49.824
+offset_top = 333.0
+offset_right = 52.176
+offset_bottom = 356.0
+text = "DEVELOPPER"
+label_settings = SubResource("LabelSettings_xrweo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.513
+anchor_right = 0.513
+offset_left = -40.976
+offset_top = 375.0
+offset_right = 42.024
+offset_bottom = 476.0
+
+[node name="Github" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "GITHUB"
+
+[node name="Linkedin" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "LINKEDIN"
+
+[node name="Youtube" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "YOUTUBE"
+
+[node name="Bouton" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 0.994076)
+stream = ExtResource("4_quwrl")
+
+[connection signal="pressed" from="VBoxContainer/Github" to="." method="_on_github_pressed"]
+[connection signal="pressed" from="VBoxContainer/Linkedin" to="." method="_on_linkedin_pressed"]
+[connection signal="pressed" from="VBoxContainer/Youtube" to="." method="_on_youtube_pressed"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://8y3cagqwfo1q"]
+
+[ext_resource type="Script" path="res://scenes/ennemie2.gd" id="1_4wq13"]
+[ext_resource type="Texture2D" uid="uid://bgt8fjwiljbaj" path="res://Ennemie2-4.png" id="2_42fch"]
+[ext_resource type="Texture2D" uid="uid://6hn7mj26mdpb" path="res://Ennemie2.png" id="2_c2dom"]
+[ext_resource type="Texture2D" uid="uid://b6y43gcxwmvbc" path="res://Ennemie2-2.png" id="3_0wy4j"]
+[ext_resource type="Texture2D" uid="uid://cr5o4sb8h576t" path="res://Ennemie2-3.png" id="4_xy1i8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxv0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_42fch")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c2dom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0wy4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xy1i8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2s31"]
+radius = 22.0
+height = 74.0
+
+[node name="Ennemi2" type="Area2D"]
+script = ExtResource("1_4wq13")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cxv0u")
+animation = &"idle"
+autoplay = "run"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.999997, 1.375)
+scale = Vector2(2.7, 4.0375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_a2s31")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
